@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>多语言目录整理台</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <h1>多语言目录整理台</h1>
+      <span id="catalog-version" class="badge badge-neutral"></span>
+    </div>
+    <div class="topbar-actions">
+      <label class="field-inline">
+        <span>市场</span>
+        <select id="market-select"></select>
+      </label>
+      <label class="field-inline">
+        <span>预览语种</span>
+        <select id="language-select"></select>
+      </label>
+      <button id="reset-btn" class="btn btn-ghost" type="button">重置人工修改</button>
+      <button id="export-btn" class="btn btn-primary" type="button">导出市场文件</button>
+    </div>
+  </header>
+
+  <section class="toolbar card">
+    <input id="search-input" class="search" type="search" placeholder="搜索商品主键 / 标题 / 类目原值…" />
+    <div id="filter-chips" class="chips" role="group" aria-label="问题筛选"></div>
+    <div class="toolbar-right">
+      <span id="scope-info" class="muted"></span>
+      <button id="batch-btn" class="btn btn-accent" type="button" disabled>批量修改…</button>
+    </div>
+  </section>
+
+  <section class="stats" id="stats-row"></section>
+
+  <main class="card">
+    <table class="grid">
+      <thead>
+        <tr>
+          <th class="col-check"><input id="check-all" type="checkbox" aria-label="全选" /></th>
+          <th class="col-id">商品主键</th>
+          <th class="col-title">标题（最终预览）</th>
+          <th class="col-desc">描述摘要</th>
+          <th class="col-unit">单位</th>
+          <th class="col-cat">类目</th>
+          <th class="col-source">来源</th>
+          <th class="col-issue">问题</th>
+          <th class="col-actions">操作</th>
+        </tr>
+      </thead>
+      <tbody id="grid-body"></tbody>
+    </table>
+    <p id="empty-hint" class="empty-hint" hidden>当前筛选条件下没有商品。</p>
+  </main>
+
+  <!-- 编辑抽屉 -->
+  <div id="editor-backdrop" class="backdrop" hidden></div>
+  <aside id="editor" class="drawer" hidden aria-label="商品编辑器">
+    <div class="drawer-head">
+      <h2 id="editor-title">编辑商品</h2>
+      <button class="btn btn-ghost" id="editor-close" type="button">关闭</button>
+    </div>
+    <div id="editor-body" class="drawer-body"></div>
+  </aside>
+
+  <!-- 市场预览 -->
+  <div id="preview-backdrop" class="backdrop" hidden></div>
+  <div id="preview" class="modal" hidden>
+    <div class="modal-head">
+      <h2 id="preview-title">市场最终内容预览</h2>
+      <button class="btn btn-ghost" id="preview-close" type="button">关闭</button>
+    </div>
+    <div id="preview-body" class="modal-body"></div>
+  </div>
+
+  <!-- 批量修改 -->
+  <div id="batch-backdrop" class="backdrop" hidden></div>
+  <div id="batch-modal" class="modal" hidden>
+    <div class="modal-head">
+      <h2>批量修改预演</h2>
+      <button class="btn btn-ghost" id="batch-close" type="button">关闭</button>
+    </div>
+    <div class="modal-body" id="batch-body"></div>
+  </div>
+
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+
+  <script type="module" src="./src/app.js"></script>
+</body>
+</html>

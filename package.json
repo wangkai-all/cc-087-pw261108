@@ -1,0 +1,16 @@
+{
+  "name": "multilingual-catalog-workbench",
+  "version": "1.0.0",
+  "private": true,
+  "description": "多语言目录整理台：按商品主键合并多语言字段、回退解析、冲突裁定、市场规则校验与市场文件导出",
+  "type": "module",
+  "scripts": {
+    "start": "node ./scripts/serve.js",
+    "serve": "node ./scripts/serve.js",
+    "test": "node --test \"tests/**/*.test.js\"",
+    "smoke": "node ./scripts/dom-smoke.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
